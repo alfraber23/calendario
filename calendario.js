@@ -51,19 +51,12 @@ function faseLunar(dia,mes,anio)
     }
 
     ++mes;
-
     c = 365.25 * anio;
-
     e = 30.6 * mes;
-
     totalDias = c + e + dia - 694039.09; 
-
     totalDias /= 29.5305882;
-
     fase = parseInt(totalDias); 
-
     totalDias -= fase; 
-
     fase = Math.round(totalDias * 8);
 
     if (fase >= 8 ) {
@@ -71,8 +64,8 @@ function faseLunar(dia,mes,anio)
     }
     let nombreDeFase = ["Luna nueva", "Luna Creciente", "Cuarto creciente", "Luna gibosa creciente", "Luna llena", "Luna gibosa menguante", "Cuarto menguante", "Luna menguante"];
     
-    return 
-    console.log(nombreDeFase[fase]);
+    
+    console.log(laFaseLunarDelDia = nombreDeFase[fase]);
 }
 
 function obtenerDatos(){
@@ -85,12 +78,16 @@ function obtenerDatos(){
     calendario(dia,mes,anio.value);
     validaAnioBisiesto(anio.value);
     faseLunar(dia,mes,anio.value);
+
+    return [calendario(),validaAnioBisiesto(),faseLunar()];
 }
 
-function imprimeDatos(){
+function imprimeDatos(callback){
+    let modifica = document.getElementById("datos");
+    modifica.value=callback[2];
 
 }
 
-
+imprimeDatos(obtenerDatos);
 
 
