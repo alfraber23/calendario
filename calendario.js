@@ -75,6 +75,22 @@ function faseLunar(dia,mes,anio)
     console.log(nombreDeFase[fase]);
 }
 
+function obtenerDatos(){
+    let dias = document.getElementById("dia");
+    let dia = dias.value;
+    let meses = document.getElementById("mes");
+    let mes = meses.value;
+    let anio = document.getElementById("anio");
+
+    calendario(dia,mes,anio.value);
+    validaAnioBisiesto(anio.value);
+    faseLunar(dia,mes,anio.value);
+}
+
+function imprimeDatos(){
+
+}
+
 
 
 
