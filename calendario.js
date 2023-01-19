@@ -1,7 +1,6 @@
-function calendario() {
-    let dia = 28
-    let mes = 2
-    let anio = 2023
+
+
+function calendario(dia,mes,anio) {
     let fecha = new Date(`${anio}-${mes}-${dia}`)
     let day = fecha.getDay();
     console.log(day);
@@ -22,8 +21,8 @@ function calendario() {
 
 }
 
-function validaAnioBisiesto(){
-    let anio = 2024;
+function validaAnioBisiesto(anio){
+
 
     if (anio % 4 == 0) {
         if (anio % 100 == 0) {
@@ -38,9 +37,57 @@ function validaAnioBisiesto(){
     } else {
         console.log("no es bisiesto");
     }
-
-
 }
 
-calendario();
-validaAnioBisiesto();
+function faseLunar(dia,mes,anio)
+{
+    let fase = 0;
+    let totalDias = 0;
+    var c = e = 0;
+
+    if (mes < 3) {
+        anio--;
+        mes += 12;
+    }
+
+    ++mes;
+
+    c = 365.25 * anio;
+
+    e = 30.6 * mes;
+
+    totalDias = c + e + dia - 694039.09; 
+
+    totalDias /= 29.5305882;
+
+    fase = parseInt(totalDias); 
+
+    totalDias -= fase; 
+
+    fase = Math.round(totalDias * 8);
+
+    if (fase >= 8 ) {
+        fase = 0; 
+    }
+    let nombreDeFase = ["Luna nueva", "Luna Creciente", "Cuarto creciente", "Luna gibosa creciente", "Luna llena", "Luna gibosa menguante", "Cuarto menguante", "Luna menguante"];
+    
+    console.log(nombreDeFase[fase]);
+}
+
+function obtenerDatos(){
+    let dias = document.getElementById("dia");
+    let dia = dias.value;
+    let meses = document.getElementById("mes");
+    let mes = meses.value;
+    let anio = document.getElementById("anio");
+
+    calendario(dia,mes,anio.value);
+    validaAnioBisiesto(anio.value);
+    faseLunar(dia,mes,anio.value);
+    console.log(anio.value);
+    
+}
+
+
+
+
