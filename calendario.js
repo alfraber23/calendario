@@ -11,11 +11,11 @@ function calendario(dia,mes,anio) {
         case 3:
         case 4:
         case 5:
-            return "es laboral";
+            return "Es un dia laboral ";
             break;
         case 0:
         case 6:
-            return "descansa";
+            return "Es un dia de descanso ";
             break
     }
 
@@ -26,15 +26,15 @@ function validaAnioBisiesto(anio){
     if (anio % 4 == 0) {
         if (anio % 100 == 0) {
             if (anio % 400 == 0) {
-                return "es bisiesto";
+                return "de un año bisiesto ";
             } else {
-                return "no es bisiesto";
+                return "de un año normal ";
             }
         } else {
-            return "es bisiesto";
+            return "de un año bisiesto ";
         }
     } else {
-        return "no es bisiesto";
+        return "de un año normal ";
     }
 }
 
@@ -63,7 +63,7 @@ function faseLunar(dia,mes,anio)
     }
     let nombreDeFase = ["Luna nueva", "Luna Creciente", "Cuarto creciente", "Luna gibosa creciente", "Luna llena", "Luna gibosa menguante", "Cuarto menguante", "Luna menguante"];
     
-    return nombreDeFase[fase];
+    return ("y la fase lunar fue una "+nombreDeFase[fase]);
     /* console.log(nombreDeFase[fase]); */
 }
 
@@ -78,7 +78,7 @@ function obtenerDatos(){
     validaAnioBisiesto(anio.value);
     faseLunar(dia,mes,anio.value); */
 
-    return [calendario(dia,mes,anio.value),validaAnioBisiesto(anio.value),faseLunar(dia,mes,anio.value)];
+    return [calendario(dia,mes,anio.value)+validaAnioBisiesto(anio.value)+faseLunar(dia,mes,anio.value)];
 }
 
 function imprimeDatos(callback){
